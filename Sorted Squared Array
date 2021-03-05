@@ -1,0 +1,22 @@
+/**
+* This program executes in O(n log n) time
+*/
+
+import java.util.*;
+
+class Program {
+
+  public int[] sortedSquaredArray(int[] array) {
+		
+		int[] out = new int[array.length] ;
+		
+		//Square each value in @param array and add it to our output array
+		for (int i = 0 ; i < array.length ; i++)
+			out[i] = array[i] * array[i] ;
+	
+		//We sort the output, because the problem specifies that it needs to be in ascending order, whiel inputs may be in any order
+		Arrays.sort(out) ;
+		
+    return out ;
+  }
+}
