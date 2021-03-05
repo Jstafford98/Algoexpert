@@ -1,0 +1,40 @@
+import java.util.*;
+
+class Program {
+
+  public String tournamentWinner(ArrayList<ArrayList<String>> competitions, ArrayList<Integer> results) {
+		
+		HashMap<String,Integer> teams = new HashMap<>() ; //This HashMap will hold all teams that won at least once and their scores
+		String currentWinner = "" ; //This will be our return value
+		
+		teams.put(currentWinner,0) ; //Temporary place-holder to prevent errors 
+		
+		for (int i = 0 ; i < competitions.size() ; i++){
+			
+			int oldCount = 0 ; //Will be used when incrementing the score for a win
+			
+			ArrayList<String> competition = competitions.get(i) ; //The current competition
+			String home = competition.get(0), away = competition.get(1) ;//Get the home and away teams in the current competition
+			String roundWinner = results.get(i) == 1 ? home : away ;//Determine who won based on the result
+			
+			//If we have not seen this team yet, add it with a score of 1
+			if (!teams.containsKey(roundWinner)){
+				teams.put(roundWinner,1) ;
+		  }
+			//If we have seen this team, get the old count, increment it, and place it back in
+			else {
+				oldCount = teams.get(roundWinner) ;
+				teams.put(roundWinner,oldCount+1) ;
+			}
+			
+			//If our current winner has more wins that our all time winner, swap them out
+			if (teams.get(roundWinner) > teams.get(currentWinner)){
+				currentWinner = roundWinner ;
+			}
+			
+		}
+		
+		//Return the all time winner
+    return currentWinner;
+  }
+}
