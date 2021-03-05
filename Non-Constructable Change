@@ -1,0 +1,18 @@
+import java.util.*;
+
+class Program {
+
+  public int nonConstructibleChange(int[] coins) {
+    
+		Arrays.sort(coins) ; //Sort
+		int cMaxChange = 0 ; //Init return val
+	
+		for (int i = 0 ; i < coins.length ; i++){
+			
+			if (coins[i] > cMaxChange + 1)
+				return cMaxChange + 1 ;
+			cMaxChange += coins[i] ;
+		}
+		return cMaxChange + 1 ;
+  } 
+}
