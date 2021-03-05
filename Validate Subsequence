@@ -1,0 +1,21 @@
+/**
+* This function executes in O(n) time. 
+*/
+
+import java.util.*;
+
+class Program {
+  public static boolean isValidSubsequence(List<Integer> array, List<Integer> sequence) {
+		
+    int sequencePos = 0,arrayPos = 0 ;
+		
+		//We iterate until either all ints in sequence have been found or we hit the end of the array
+		while (arrayPos < array.size() && sequencePos < sequence.size()){
+			//If we find a match to our current index in sequence, we increment out sequence index
+			if (array.get(arrayPos++).equals(sequence.get(sequencePos)))
+				sequencePos++ ;
+		}
+		//Finally, check to see if all sequence values were found by seeing if our index is now the same as the size of the List
+    return sequencePos == sequence.size();
+  }
+}
