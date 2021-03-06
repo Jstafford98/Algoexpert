@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Program {
+
+  public static int nodeDepths(BinaryTree root) {
+    // Write your code here.
+    return calcDepth(root,0) ;
+  }
+	public static int calcDepth(BinaryTree node,int runningCount){
+		if (node == null)
+			return 0 ;
+		return runningCount + calcDepth(node.left,runningCount + 1) + calcDepth(node.right,runningCount + 1) ; //This uses a depth first search on each side of the binary tree to count all nodes and add their depths
+	}
+  static class BinaryTree {
+    int value;
+    BinaryTree left;
+    BinaryTree right;
+
+    public BinaryTree(int value) {
+      this.value = value;
+      left = null;
+      right = null;
+    }
+  }
+}
