@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Program {
+	
+  public static int findClosestValueInBst(BST tree, int target) {
+    return findClosestValueInBst(tree,target,tree.value);
+  }
+	
+	public static int findClosestValueInBst(BST tree, int target, int best){
+		
+		int returnBest = best ;
+		
+		//If this node is closer to the target, we will return this node's value
+		if ( Math.abs(tree.value - target) < Math.abs(returnBest - target))
+			returnBest = tree.value ;
+		
+		//If the current node value is greater than the target, then we know that we must go to the left to try and get closer to our target
+		if (tree.left != null && tree.value > target)
+			return findClosestValueInBst(tree.left,target,returnBest) ;
+		//If the current node value is less than the target, we go right to get closer to the target
+		else if (tree.right != null && tree.value < target)
+			return findClosestValueInBst(tree.right,target,returnBest) ;
+		//If both nodes are null, then we will just return the current best (exit case)
+		return returnBest ;
+		
+	}
+
+  static class BST {
+    public int value;
+    public BST left;
+    public BST right;
+
+    public BST(int value) {
+      this.value = value;
+    }
+  }
+}
