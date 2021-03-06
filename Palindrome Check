@@ -1,0 +1,15 @@
+import java.util.*;
+
+class Program {
+  public static boolean isPalindrome(String str) {
+		int left = 0, right = str.length()-1 ;
+		//Use a while loop to cascade inwards
+    while (left < right){
+			if (str.charAt(left) != str.charAt(right))
+				return false ;
+			right-- ;
+			left ++ ;
+		}
+    return true;
+  }
+}
