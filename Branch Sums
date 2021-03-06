@@ -1,0 +1,43 @@
+import java.util.*;
+
+class Program {
+  // This is the class of the input root. Do not edit it.
+  public static class BinaryTree {
+    int value;
+    BinaryTree left;
+    BinaryTree right;
+
+    BinaryTree(int value) {
+      this.value = value;
+      this.left = null;
+      this.right = null;
+    }
+  }
+
+  public static List<Integer> branchSums(BinaryTree root) {
+    
+		ArrayList<Integer> sums = new ArrayList<>() ;//We will pass this list with each recursive call so we can update values
+		
+		calculateBranchSum(root,0,sums) ;
+		
+    return sums;
+  }
+	
+	public static void calculateBranchSum(BinaryTree node, int runningSum, List<Integer> sum){
+		
+		//We have hit a leaf node, so we add the running sum so far and go back in the stack until we have removed all from the stack or
+		//we find a node with a right branch
+		if (node.left == null && node.right == null){
+			sum.add(runningSum + node.value) ;
+		}
+		//If we have a left branch, we keep going
+		if (node.left != null){
+			calculateBranchSum(node.left,runningSum+node.value,sum) ;
+		}
+		//Otherwise, if we have a right branch, we start a new branch
+		if (node.right != null){
+			calculateBranchSum(node.right,runningSum+node.value,sum) ;
+		}	
+		
+	}
+}
