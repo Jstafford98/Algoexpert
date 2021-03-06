@@ -1,0 +1,16 @@
+import java.util.*;
+
+class Program {
+  public static String caesarCypherEncryptor(String str, int key) {
+   StringBuilder output = new StringBuilder() ;
+		for (int i = 0 ; i < str.length() ; i++){
+			output.append(charShift(str.charAt(i),key % 26)) ;//Using % on the key ensures any keys above 26 will work
+		}
+    return output.toString() ;
+  }
+	private static char charShift(char c, int k){
+		int shifted = c + k ;
+		return shifted <= 122 ? (char) shifted : (char) (96+shifted % 122) ; //96 is the ASCII right before 'a' (97), so we add the shifted character's value to that and mod by 122. This will 
+																																				// give us the remainder of how many over 122 we went, so that is simply added to 96
+	}
+}
