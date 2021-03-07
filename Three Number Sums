@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Program {
+  public static List<Integer[]> threeNumberSum(int[] array, int targetSum) {
+		
+		ArrayList<Integer[]> out = new ArrayList<>() ;
+    Arrays.sort(array) ;
+		int start , end ;
+		
+		for (int i = 0 ; i < array.length-2 ; i++){
+			
+			//Create integer representing the left and right value for this iteration
+			int left = i + 1 ;
+			int right = array.length-1 ;
+			
+			while (left < right){
+				
+				//Sum of current three nodes
+				int sum = array[left] + array[i] + array[right] ;
+				
+				//If we have a match, add to list, decrease/increase nodes
+				if (sum == targetSum){
+					out.add(new Integer[]{array[i],array[left],array[right]}) ;
+					left ++ ;
+					right -- ;
+				}
+				//Too small, increase left
+				else if (sum < targetSum)
+					left++ ;
+				//Too big, decrease right
+				else if (sum > targetSum)
+					right-- ;
+			}
+		}
+    return out ;
+  }
+}
