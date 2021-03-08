@@ -1,0 +1,22 @@
+import java.util.*;
+
+class Program {
+  public static int[] insertionSort(int[] array) {
+    sort(array) ;
+    return array;
+  }
+	public static void sort(int[] array){
+		//Iterates loop linearly
+		for (int i = 1 ; i < array.length ; i++){
+			for (int j = i ; j > 0 ; j--){
+
+				if (array[j-1] > array[j]){
+					int temp = array[j-1] ;
+					array[j-1] = array[j] ;
+					array[j] = temp ;
+				}
+					
+			}
+		}
+	}
+}
