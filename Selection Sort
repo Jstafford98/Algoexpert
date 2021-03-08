@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Program {
+	
+  public static int[] selectionSort(int[] array) {
+    sort(array) ;
+    return array;
+  }
+	
+	public static void sort(int[] array){
+		
+		int smallestIndex ;
+		
+		for (int i = 0 ; i < array.length-1 ; i++){
+			
+			smallestIndex = i ;
+			
+			for (int j = i ; j < array.length ; j++){
+				
+				if (array[j] < array[smallestIndex]){
+					smallestIndex = j ;
+				}
+				
+			}
+			
+			swap(i,smallestIndex,array) ;
+		}
+	}
+	
+	public static void swap(int a, int b, int[] arr){
+		int tmp = arr[a] ;
+		arr[a] = arr[b] ;
+		arr[b] = tmp ;
+	}
+	
+}
