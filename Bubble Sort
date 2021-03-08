@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Program {
+  public static int[] bubbleSort(int[] array) {
+		sort(array) ;
+    // Write your code here.
+    return array;
+  }
+	public static void sort(int[] array){
+		
+		boolean sorted = true ;
+		
+		do{
+			
+			sorted = true ;
+			
+			for (int i = 0 ; i < array.length-1 ; i++)
+				
+				//If values are out of order, set sorted to false and swap values
+				if (array[i] > array[i+1]){
+					
+					sorted = false ;
+					
+					int temp = array[i] ;
+					array[i] = array[i+1] ;
+					array[i+1] = temp ;
+					
+				}
+			
+		} while (!sorted) ;
+	}
+}
