@@ -1,0 +1,20 @@
+import java.util.*;
+
+class Program {
+
+  public boolean classPhotos(ArrayList<Integer> redShirtHeights, ArrayList<Integer> blueShirtHeights) {
+		
+   	Collections.sort(redShirtHeights,Collections.reverseOrder()); 
+		Collections.sort(blueShirtHeights,Collections.reverseOrder()) ;
+		
+		ArrayList<Integer> front = redShirtHeights.get(0) < blueShirtHeights.get(0) ? redShirtHeights : blueShirtHeights, 
+		                    back = redShirtHeights.get(0) > blueShirtHeights.get(0) ? redShirtHeights : blueShirtHeights ;
+		
+		for (int i = 0 ; i < front.size() ; i++){
+			if (front.get(i) >= back.get(i))
+				return false ;
+		}
+		
+		return true;
+  }
+}
