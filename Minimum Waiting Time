@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Program {
+
+  public int minimumWaitingTime(int[] queries) {
+    return minWaitTime(queries);
+  }
+	
+	public int minWaitTime(int[] queries){
+		
+		Arrays.sort(queries) ;
+		int waitingTime = 0, executeTime = 0 ;
+
+		for (int i = 1 ; i < queries.length ; i++){
+			waitingTime += queries[i-1] ; //Add the execution time of this query 
+			executeTime += (waitingTime) ; //Add the new waiting time so far to the execute time
+		}
+		
+		return executeTime ;
+	}
+}
