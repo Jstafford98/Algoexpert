@@ -9,18 +9,20 @@ class Program {
 		
 		HashMap<Character,Integer> chars = new HashMap<>() ;
 		
+		//Fill HashMap with characters and their counts
 		for (int i = 0 ; i < characters.length() ; i++){
-			
 			char tmp = characters.charAt(i) ;
+			//Get the value associated with this key and increment it if it exists. If it does not exist, it will put that key in the map with a default value of 1
 			chars.put(tmp,chars.getOrDefault(tmp,0)+1) ;
-				
 		}
+		
 		for (int i = 0 ; i < document.length() ; i++){
-			
 			char tmp = document.charAt(i) ;
+			//If the character does not exist or there are no more of that character available, return false
 			if (!chars.containsKey(tmp) || chars.get(tmp) == 0){
 				return false ;
 			}
+			//Decrement value in place
 			chars.put(tmp,chars.get(tmp)-1) ;
 		}
 		
