@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Program {
+
+  public boolean generateDocument(String characters, String document) {
+    return isPermutation(characters,document);
+  }
+	public boolean isPermutation(String characters, String document){
+		
+		HashMap<Character,Integer> chars = new HashMap<>() ;
+		
+		for (int i = 0 ; i < characters.length() ; i++){
+			
+			char tmp = characters.charAt(i) ;
+			chars.put(tmp,chars.getOrDefault(tmp,0)+1) ;
+				
+		}
+		for (int i = 0 ; i < document.length() ; i++){
+			
+			char tmp = document.charAt(i) ;
+			if (!chars.containsKey(tmp) || chars.get(tmp) == 0){
+				return false ;
+			}
+			chars.put(tmp,chars.get(tmp)-1) ;
+		}
+		
+		return true ;
+
+	}
+}
