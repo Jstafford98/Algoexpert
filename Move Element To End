@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Program {
+  public static List<Integer> moveElementToEnd(List<Integer> array, int toMove) {
+    
+		int checkIdx = 0, insertionIdx = array.size()-1 ;
+
+		//Iterate from both ends, we insert at the end and move inward
+		while (checkIdx < insertionIdx ){
+			
+			//Make sure the last number is not our toMove
+			if (array.get(insertionIdx) == toMove){
+				insertionIdx-- ;
+				continue ;
+			}
+			//If the left index == move, we swap the left and right internally
+			if (array.get(checkIdx) == toMove){
+				int tmp = array.get(checkIdx) ;
+				array.set(checkIdx,array.get(insertionIdx)) ;
+				array.set(insertionIdx--,tmp) ;
+			}
+			//Move to the next index
+			checkIdx++ ;
+		}
+		
+    return array ;
+  }
+}
